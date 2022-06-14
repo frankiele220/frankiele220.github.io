@@ -10,19 +10,27 @@
 </head>
 <body style="margin:0; overflow:hidden;">
 
-    <a-scene background="color: #FAFAFA">
-      <a-scene>
-        <a-assets>
-          <video id="penguin-sledding" autoplay loop="true" src="video_preview_h264.mp4"></video>
-        </a-assets>
-      
-        <!-- Using the asset management system. -->
-        <!-- <a-video src="#penguin-sledding" width="16" height="9" position="0 0 -20"></a-video> -->
-      
-        <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
-        <!-- <a-video src="airbending.mp4"></a-video> -->
-      </a-scene>
-    </a-scene>
+    <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true; precision: medium;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
+    <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+    <a-nft
+      type="nft"
+      url="your-server/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    >
+      <a-assets>
+        <video id="penguin-sledding" autoplay loop="true" src="video_preview_h264.mp4"></video>
+      </a-assets>
+    </a-nft>
+    <a-entity camera></a-entity>
+  </a-scene>
   
 </body>
 </html>
